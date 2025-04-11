@@ -1,9 +1,7 @@
 services:
   - type: web
-    name: my-flask-app
+    name: flask-app
     env: python
-    plan: free
-    pythonVersion: 3.9  # Or whichever version you want to use (e.g., 3.10)
-    buildCommand: pip install -r requirements.txt
+    buildCommand: ""
     startCommand: gunicorn app:app
-
+    pythonVersion: 3.9
