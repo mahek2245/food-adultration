@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-color:rgb(17,87,79);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .result-box {
+            display: block;
+            width: 100%;
+            max-width: 700px;
+            height: 200px; /* Increased height */
+            margin: 50px auto;
+            border: 3px solid green;
+            border-radius: 30px;
+            padding: 40px;
+            background-color: #e6ffed;
+            font-size: 26px;
+            color: #064e3b;
+            text-align: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+            line-height: 1.6;
+        }
+        
+        a {
+            display: block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: rgb(239, 239, 239);
+        }
+    </style>
+</head>
+<body>
+    <h2 style="-webkit-text-fill-color: #e6ffed;">Prediction Result</h2>
+    <div class="result-box">
+       <h2>{{ message }}</h2> 
+    </div>
+    <a href="/input"><b></b>⬅️ Try Again</a>
+</body>
+</html>
+
+ 

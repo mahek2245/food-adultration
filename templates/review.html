@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color:rgb(194, 243, 237);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .form-container, .reviews-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .rating-stars span:hover,
+    .rating-stars span.active {
+      color: gold;
+    }
+
+    .submit-btn {
+      margin-top: 1.5rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .review-card {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      background-color: #fafafa;
+    }
+
+    .review-card h3 {
+      margin: 0;
+      color: #2a5934;
+    }
+
+    .review-card p {
+      margin: 0.5rem 0;
+    }
+
+    .review-img {
+      max-width: 100px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container" id="form-section">
+    <h2>Submit Your Review</h2>
+
+    <div class="rating-stars" id="rating">
+      <span data-star="1">★</span>
+      <span data-star="2">★</span>
+      <span data-star="3">★</span>
+      <span data-star="4">★</span>
+      <span data-star="5">★</span>
+    </div>
+
+    <label for="photo">Add photo of your food item</label>
+    <input type="file" id="photo" accept="image/*">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter email used during checkout">
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name">
+
+    <label for="title">Title</label>
+    <input type="text" id="title">
+
+    <label for="comment">Comment</label>
+    <textarea id="comment" rows="4"></textarea>
+
+    <button class="submit-btn" onclick="submitReview()">Submit Review</button>
+  </div>
+
+  <div class="reviews-container" id="review-section">
+    <h2>Recent Reviews</h2>
+    <div id="reviews-list"></div>
+  </div>
+
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('#rating span');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-star'));
+        stars.forEach(s => s.classList.remove('active'));
+        for (let i = 0; i < selectedRating; i++) {
+          stars[i].classList.add('active');
+        }
+      });
+    });
+
+    function submitReview() {
+      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value;
+      const title = document.getElementById("title").value;
+      const comment = document.getElementById("comment").value;
+      const photoInput = document.getElementById("photo");
+
+      if (!email || !name || !title || !comment || selectedRating === 0) {
+        alert("Please fill all fields and select a rating.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imgURL = photoInput.files[0] ? e.target.result : '';
+
+        const review = {
+          email,
+          name,
+          title,
+          comment,
+          rating: selectedRating,
+          image: imgURL
+        };
+
+        // Save to localStorage
+        let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+        reviews.unshift(review);
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+
+        displayReviews();
+
+        // Clear form
+        document.getElementById("email").value = '';
+        document.getElementById("name").value = '';
+        document.getElementById("title").value = '';
+        document.getElementById("comment").value = '';
+        document.getElementById("photo").value = '';
+        selectedRating = 0;
+        stars.forEach(s => s.classList.remove('active'));
+      };
+
+      if (photoInput.files[0]) {
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        reader.onload({ target: { result: '' } });
+      }
+    }
+
+    function displayReviews() {
+      const reviewsList = document.getElementById("reviews-list");
+      const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+      reviewsList.innerHTML = "";
+
+      reviews.forEach(review => {
+        const reviewCard = document.createElement("div");
+        reviewCard.className = "review-card";
+        reviewCard.innerHTML = `
+          <h3>${review.title}</h3>
+          <p><strong>${review.name}</strong> (${review.email})</p>
+          <p>${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
+          <p>${review.comment}</p>
+          ${review.image ? `<img src="${review.image}" class="review-img">` : ''}
+        `;
+        reviewsList.appendChild(reviewCard);
+      });
+    }
+
+    // Load on page start
+    displayReviews();
+  </script>
+
+</body>
+</html>

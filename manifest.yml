@@ -1,0 +1,6 @@
+applications:
+  - name: PureChecks  # Your app name (used in the URL)
+    memory: 256M
+    instances: 1
+    buildpack: python_buildpack  # Tells Cloud Foundry to use the Python buildpack
+

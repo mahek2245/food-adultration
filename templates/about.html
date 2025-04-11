@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #173F35; /* green from 2nd image */
+      padding: 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2rem;
+    }
+
+    .card {
+      background-color: white;
+      width: 300px;
+      margin: 1rem;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #173F35;
+      margin-bottom: 1rem;
+    }
+
+    .about {
+      padding: 2rem;
+      background-color: #e8f5f1;
+      text-align: left;
+    }
+
+    .about h2 {
+      color: #173F35;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PureChecks</h1>
+    
+  </header>
+
+  <section class="container">
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>
+        Our mission is to empower consumers with a smart, user-friendly platform that detects and reports food adulteration, promotes food safety, and raises awareness through real-time analysis, expert insights, and active user participation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>
+        To create a world where every individual has easy access to safe, authentic, and awareness of unadulterated food through the power of technology.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Why Us</h3>
+      <p>
+        We provide a tech-driven solution that ensures transparency and consumer trust, making it easier than ever to verify food purity anytime, anywhere.
+      </p>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2 style="text-align: center;">About PureChecks</h2>
+    <p>
+      At PureChecks, we believe that purity in food is not a luxury—it’s a right. Founded with the mission to combat food adulteration, our platform uses smart technology to help users detect and understand what’s really in their food. Whether at home, in restaurants, or while shopping, PureChecks ensures that every bite you take is safe and trustworthy.<br><br>
+      With our tagline “No more Adulteration, Purity is our Consideration,” we are committed to building a safer food ecosystem. Through real-time analysis, expert-backed information, and active user engagement, PureChecks empowers individuals to make informed choices and hold food sources accountable.
+    </p>
+  </section>
+
+</body>
+</html>

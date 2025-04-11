@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PureChecks</title>
+    <style>
+        
+body {
+    background-color:#3c8565 ; 
+    color: #ffffff;       
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==== FORM CONTAINER ==== */
+.form-container {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: rgb(17,87,79); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== FORM HEADING ==== */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* ==== FORM ELEMENTS ==== */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 8px;
+    background-color:rgb(28, 143, 169) ; /* Light green fields */
+    color: #ffffff;
+    font-size: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #d2e9dd;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    background-color: #5ea88a;
+}
+
+/* ==== SUBMIT BUTTON ==== */
+button[type="submit"] {
+    width: 100%;
+    background-color: rgb(34, 156, 141); /* Bright green */
+    color: #ffffff;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #38b867;
+}
+.adult{
+    text-align: center;
+    -webkit-text-fill-color: aliceblue;
+}
+
+    </style>
+ 
+</head>
+<body style="background-color:rgb(17,87,79);">
+  
+    <h2>Enter your observations</h2>
+    <form action="/predict" method="post">
+        <label>Food:</label>
+        <select name="food" id="food-select" >
+            <option value="">--Select--</option>
+            <option>Milk</option>
+            <option>Sugar</option>
+            <option>Salt</option>
+            <option>Chilli powder</option>
+            <option>Turmeric</option>
+            <option>Rice</option>
+            <option>Honey</option>
+            <option>Vegetable oil</option>
+            <option>Tea Leaves</option>
+            <option>Coffee</option>
+            <option>Green Peas</option>
+            <option>Ice Cream</option>
+            <option>Mustard Seeds</option>
+            <option>Black pepper</option>
+            <option>others </option>
+
+
+        </select><br><br>
+
+     <label>Color:</label>
+        <select name="color">
+            <option value="">--Select--</option>
+            <option>Pale</option>
+            <option>White</option>
+            <option>Yellow</option>
+            <option>Dull-white</option>
+            <option>Grey</option>
+            <option>Red</option>
+            <option>Bright-Red</option>
+            <option>Bright-Yellow</option>
+            <option>Off-white</option>
+            <option>Golden</option>
+            <option>Black</option>
+            <option>Brown</option>
+        </select><br><br>
+
+        <label>Odour:</label>
+        <select name="smell">
+            <option value="">--Select--</option>
+            <option>Soapy</option>
+            <option>Pungent</option>
+            <option>Neutral</option>
+            <option>Earthy</option>
+            <option>Musty</option>
+            <option>Sweet</option>
+            <option>Sour</option>
+            <option>Rancid</option>
+            <option>Chemical</option>
+        </select><br><br>
+
+        <label>Texture:</label>
+        <select name="texture">
+            <option value="">--Select--</option>
+            <option>Smooth</option>
+            <option>Crystalline</option>
+            <option>Gritty</option>
+            <option>Powdery</option>
+            <option>Sticky</option>
+            <option>Watery</option>
+            <option>Flaky</option>
+            <option>Creamy</option>
+
+            
+        </select><br><br>
+
+        <label>Foam:</label>
+        <select name="foam">
+            <option value="">--Select--</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select><br><br>
+
+        <label>Taste:</label>
+        <select name="taste">
+            <option value="">--Select--</option>
+            <option>Bitter</option>
+            <option>Sweet</option>
+            <option>Neutral</option>
+            <option>Spicy</option>
+            <option>Tasteless</option>
+            <option>Mild</option>
+          
+        </select><br><br>
+        
+            <input type="submit" value="Check Adulteration">
+          <div class="adult">
+            <a href="/">Go Back</a>
+          </div>
+            
+
+    </form>
+    
+   
+        
+
+   
+       
+    
+
+</body>
+</html>
