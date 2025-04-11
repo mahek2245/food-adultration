@@ -8,9 +8,7 @@
 # model = pickle.load(open("model (1).pkl", "rb"))
 # model_columns = pickle.load(open("model_columns (1).pkl", "rb"))
 
-# @app.route('/')
-# def home():
-#     return render_template("Home.html")
+
 
 # @app.route('/predict', methods=["POST"])
 # def predict():
@@ -128,7 +126,7 @@ def predict():
     input_data = {
         "Food": request.form['food'],
         "Color": request.form['color'],
-        "Smell": request.form['smell'],
+        "Odour": request.form['smell'],
         "Texture": request.form['texture'],
         "Foam": request.form['foam'],
         "Taste": request.form['taste']
