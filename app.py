@@ -102,7 +102,9 @@ model_columns = pickle.load(open("model_columns (1).pkl", "rb"))
 
 @app.route('/')
 def home():
+   
     return render_template("Home.html")
+
 
 @app.route('/about')
 def about():
